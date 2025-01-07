@@ -1,35 +1,123 @@
-body{
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height:100vh;
-    margin:0;
-    background: #222;
-    background-image: url('https://source.unsplash.com/1600x900/?landscape');
-
+    min-height: 100vh;
+    background-image: url('background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     font-family: 'Roboto Slab', serif;
-    font-size:120%;
-    
-   
-
+    font-size: 120%;
+    position: relative;
+    overflow: hidden;
 }
-.card{
-    background: #000000d0;
-    color:white;
-    padding:2em;
+
+.neural-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.neural-dot {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #4CAFff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #4CAFff;
+    opacity: 0.6;
+}
+
+.neural-dot:nth-child(1) { animation: move1 15s infinite linear; top: 10%; left: 10%; }
+.neural-dot:nth-child(2) { animation: move2 18s infinite linear; top: 20%; left: 20%; }
+.neural-dot:nth-child(3) { animation: move3 20s infinite linear; top: 30%; left: 30%; }
+.neural-dot:nth-child(4) { animation: move4 17s infinite linear; top: 40%; left: 40%; }
+.neural-dot:nth-child(5) { animation: move5 19s infinite linear; top: 50%; left: 50%; }
+.neural-dot:nth-child(6) { animation: move1 16s infinite linear; top: 60%; left: 60%; }
+.neural-dot:nth-child(7) { animation: move2 21s infinite linear; top: 70%; left: 70%; }
+.neural-dot:nth-child(8) { animation: move3 14s infinite linear; top: 80%; left: 80%; }
+.neural-dot:nth-child(9) { animation: move4 22s infinite linear; top: 90%; left: 90%; }
+.neural-dot:nth-child(10) { animation: move5 16s infinite linear; top: 15%; left: 85%; }
+.neural-dot:nth-child(11) { animation: move1 19s infinite linear; top: 25%; left: 75%; }
+.neural-dot:nth-child(12) { animation: move2 17s infinite linear; top: 35%; left: 65%; }
+.neural-dot:nth-child(13) { animation: move3 20s infinite linear; top: 45%; left: 55%; }
+.neural-dot:nth-child(14) { animation: move4 18s infinite linear; top: 55%; left: 45%; }
+.neural-dot:nth-child(15) { animation: move5 21s infinite linear; top: 65%; left: 35%; }
+
+@keyframes move1 {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(100px, 50px) scale(1.2); }
+    50% { transform: translate(200px, 0) scale(1); }
+    75% { transform: translate(100px, -50px) scale(0.8); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes move2 {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-100px, 100px) scale(1.2); }
+    50% { transform: translate(-200px, 0) scale(1); }
+    75% { transform: translate(-100px, -100px) scale(0.8); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes move3 {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(150px, -150px) scale(1.2); }
+    66% { transform: translate(-150px, -150px) scale(0.8); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes move4 {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(120px, 120px) scale(1.2); }
+    50% { transform: translate(0, 240px) scale(1); }
+    75% { transform: translate(-120px, 120px) scale(0.8); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes move5 {
+    0% { transform: translate(0, 0) scale(1); }
+    20% { transform: translate(-80px, 80px) scale(1.2); }
+    40% { transform: translate(-160px, 0) scale(1); }
+    60% { transform: translate(-80px, -80px) scale(0.8); }
+    80% { transform: translate(80px, -80px) scale(1.2); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+.card {
+    position: relative;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 2em;
     border-radius: 30px;
-    width:100%;
+    width: 100%;
     max-width: 420px;
-    margin:1em;
-
+    margin: 1em;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
-.search{
-    display:flex;
-    align-items:center;
+
+.search {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
     justify-content: center;
-
 }
+
 button{
     margin:0.5em;
     border-radius: 50%;
@@ -41,8 +129,6 @@ button{
     color:white;
     cursor: pointer;
     transition: 0.2s ease-in-out;
-
-
 
 }
 button:hover{
@@ -60,6 +146,7 @@ input.search-bar
     font-family:inherit;
     font-size:105%;
     width:calc(100%-80px);
+
 
 
 
